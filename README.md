@@ -1,4 +1,4 @@
-# Project Title
+# Arcane Archives
 
 ## Overview
 
@@ -18,30 +18,35 @@ The users of my app will be avid readers, people on the move and others who can'
 - View Ebooks on client
 - Upload new books to the libary
 - Homepage with list of all the books
+- Users can review books
 - When a book is being viewed it can't be accessed by any other users (Time limit to prevent stalling?).
 - Users can register and login (Auth?)
 - Logged in users can borrow a book for a week
-- Users can be put on a wait list for a book (Confirm within a day or book released)
-- Users can review books
+- If a user is logged in and has borrowed books then they should be displayed at the top of the home page.
 
 ## Implementation
 
 ### Tech Stack
 
-- JavaScript
 - React
-- SaSS
-- React-router-dom
-- Node.js
-- Express server
+- TypeScript
 - MySQL
-- Knex.js
+- Express
+- Client libraries:
+  - react
+  - react-router
+  - axios
+- Server libraries:
+  - knex
+  - express
 
 ### APIs and external Data
 
 - Project Gutenberg will be used for copyright free ebooks. This is not an API but is a download of outside books.
 
 ### Sitemap
+
+All pages should be mobile first and responsive.
 
 - "/" Homepage - A grid of books each with a cover image, title and author. Also has a serch bar in the header. Book card will link to the book info.
 - "/books/:id" - Book info page. Has the book title and blurb with a button to the reader. Below are the user review of the books.
@@ -52,11 +57,25 @@ The users of my app will be avid readers, people on the move and others who can'
 
 ### Mockups
 
-Provide visuals of your app's screens. You can use tools like Figma or pictures of hand-drawn sketches.
+### Book Details Page
 
-![alt text](Mockups002-1.jpg)
+![alt text](/Mockups/Library_page-0001.jpg)
 
- ![alt text](Mockups001-1.jpg)
+### Upload New Book Page
+
+![alt text](/Mockups/Library_page-0002.jpg)
+
+### Reader Page
+
+![alt text](/Mockups/Library_page-0003.jpg)
+
+### User details page
+
+![alt text](/Mockups/Library_page-0004.jpg)
+
+### Register Page
+
+![alt text](/Mockups/Library_page-0005.jpg)
 
 ### Data
 
@@ -71,11 +90,14 @@ Books endpoints
 - get "/books" gets all the book titles, authors and cover images.
 - get "/books/:id" gets everything about a specific book.
 - post "books" adds a new book.
+- get "/books/:id/reader" gets everything about the book for the reader, including the text file.
+- patch "books/:id/borrow" a user can borrow a book
 
 User endpoints
 
-- get "/user/:id" gets the username of that user.
-- post "/user/" creates a new user.
+- get "/user/:id" gets the username and reviews of that user.
+- get "/user/:id/borrowed books" gets all the information on all the books the user has borrowed
+- post "/user/" creates a new user
 
 Reveiw endpoints
 
@@ -87,13 +109,63 @@ Reveiw endpoints
 
 Does your project include any login or user profile functionality? If so, describe how authentication/authorization will be implemented.
 
-I will use authenticaition to have users who can reserve books and leave reviews with names. 
+I will use authenticaition to have users who can reserve books and leave reviews with names.
 
 ## Roadmap
 
-Scope your project as a sprint. Break down the tasks that will need to be completed and map out timeframes for implementation. Think about what you can reasonably complete before the due date. The more detail you provide, the easier it will be to build.
+- Create client
 
+  - react project with routes and boilerplate pages
 
+- Create server
+
+  - express project with routing, with placeholder 200 responses
+
+- Create migrations
+
+- Create 10 sample books and 20 sample reviews on the database.
+
+- Feature: homepage
+
+  - Backend endpoint for get "/books".
+  - Implement frontend homepage
+
+- Feature: book details page without reviews
+
+  - Backend endpoint for get "/books/:id"
+  - Frontend page for book details
+
+- Feature: reviews to book details page - defaults to aynonomus if not logged in
+
+  - Implement backend for get "/reviews/:bookid" and post "/reviews".
+  - Implement the forntend add new reviews and to display all the reviews for the book.
+
+- Feature: reader page
+
+  - Implement the backend for get "/books/:id/reader"
+  - Implement the frontend for the reader page
+  - Add lockout feature while book is being viewed - Add timelimit
+
+- Feature: Upload new books to the libary
+
+  - Create the backend for post "/books"
+  - Implement the frontend for upload page
+
+- Feature users can login:
+
+  - Create backend for post "/register"
+  - Create frontend for register page
+
+- Feature logged in user can have reviews linked to there account.
+
+- Feature logged in users can borrow books
+
+  - Create backend for patch for "books/:id/borrow"
+  - Add borrow book section to book details
+
+- Feature borrowed books homepage
+
+- Bug fixing
 
 ## Nice-to-haves
 

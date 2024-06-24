@@ -271,6 +271,8 @@ I will use authenticaition to have users who can reserve books and leave reviews
 
 - Create 10 sample books and 20 sample reviews on the database.
 
+- Create seeds
+
 - Feature: homepage
 
   - Backend endpoint for get "/books".

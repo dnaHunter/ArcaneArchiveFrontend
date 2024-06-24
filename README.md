@@ -83,7 +83,7 @@ All pages should be mobile first and responsive.
 
 ### Data
 
-![alt text](<CapstoneDB(1)-1.png>)
+![alt text](/Mockups/CapstoneDB(1)-1.png)
 
 ### Endpoints
 

@@ -57,6 +57,10 @@ All pages should be mobile first and responsive.
 
 ### Mockups
 
+### Home page
+
+![alt text](/Mockups/image.png)
+
 ### Book Details Page
 
 ![alt text](/Mockups/Library_page-0001.jpg)

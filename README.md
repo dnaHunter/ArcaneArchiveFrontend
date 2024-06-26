@@ -323,3 +323,6 @@ I will use authenticaition to have users who can reserve books and leave reviews
 - Filter books on genre
 - Search for books
 - Saves reading progress, local storage, cookies
+- All time borrowed books
+- How many times a book has been borrowed
+- Copies

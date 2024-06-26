@@ -13,7 +13,7 @@ export default function Homepage() {
     try {
       const { data } = await axios.get(`${BACKEND_URL}/books`);
       console.log(`${BACKEND_URL}/books`);
-      
+
       setBookList(data);
     } catch (error) {
       setError(error);
@@ -39,7 +39,7 @@ export default function Homepage() {
         {bookList.map((book) => (
           <BookIcon
             key={book.id}
-            URL={"https://picsum.photos/200/300"}
+            URL={book.coverImagePath}
             title={book.title}
             author={book.author}
           />

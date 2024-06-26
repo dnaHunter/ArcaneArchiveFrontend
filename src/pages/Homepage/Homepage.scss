@@ -1,0 +1,15 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.home {
+  background-color: $darkgrey;
+  padding: 0.5rem 1rem;
+  
+
+  &__all {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+}

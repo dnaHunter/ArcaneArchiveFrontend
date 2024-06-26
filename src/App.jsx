@@ -6,9 +6,10 @@ function App() {
 
   return (
     <BrowserRouter>
+    <Header />
       <Routes>
         <Route path="/" element={<Navigate to="/homepage" />} />
-        <Route path="/homepage" element={<Header />} />
+        <Route path="/homepage" element={""} />
       </Routes>
     </BrowserRouter>
   );

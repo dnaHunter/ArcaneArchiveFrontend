@@ -4,11 +4,12 @@ import "./Header.scss";
 export default function Header() {
   return (
     <section className="header">
-      <p className="header__logo">ARCANE ARCHIVE</p>
+      <Link to="/" className="header__logo">
+        ARCANE ARCHIVE
+      </Link>
 
-    
       <Link to="/login" className="header__login">
-        Login 
+        Login
       </Link>
     </section>
   );

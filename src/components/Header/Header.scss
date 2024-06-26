@@ -7,7 +7,11 @@
   justify-content: space-between;
   padding: 0.5rem 1rem;
   background-color: $darkgreen;
-  color: white;
+
+  &__logo {
+    text-decoration: none;
+    color: white;
+  }
 
   &__login {
     text-decoration: none;

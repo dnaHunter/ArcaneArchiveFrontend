@@ -41,6 +41,7 @@ export default function Homepage() {
         {bookList.map((book) => (
           <BookIcon
             key={book.id}
+            id={book.id}
             URL={book.coverImagePath}
             title={book.title}
             author={book.author}

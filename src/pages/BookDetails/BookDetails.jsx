@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import "./BookDetails.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import ReviewForm from "../../components/ReviewForm/ReviewForm";
 
 export default function BookDetails() {
   const [book, setBook] = useState(null);
@@ -33,6 +34,15 @@ export default function BookDetails() {
     return <p>Loading...</p>;
   }
 
+  const toggleButton = (
+    <button
+      className="reviews__toggle"
+      onClick={() => setShowReviewForm(true)}
+    >
+      + Add a Review?
+    </button>
+  );
+
   return (
     <section className="bookDetails">
       <article className="bookDetails__hero">
@@ -58,11 +68,7 @@ export default function BookDetails() {
       </article>
       <section className="reviews">
         <h2 className="reviews__title">Reviews</h2>
-        {showReviewForm ? (
-          <ReviewForm />
-        ) : (
-          <button className="reviews__toggle">+ Add a Review?</button>
-        )}
+        {showReviewForm ? <ReviewForm /> : toggleButton}
       </section>
     </section>
   );

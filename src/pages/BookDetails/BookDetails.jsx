@@ -6,6 +6,7 @@ import axios from "axios";
 export default function BookDetails() {
   const [book, setBook] = useState(null);
   const [error, setError] = useState(false);
+  const [showReviewForm, setShowReviewForm] = useState(false);
   const { id } = useParams();
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -52,9 +53,17 @@ export default function BookDetails() {
         </div>
       </article>
       <article className="bookDetails__blurb">
-        <h3 className="bookDetails__blurbTitle">Blurb</h3>
+        <h2 className="bookDetails__blurbTitle">Blurb</h2>
         <p className="bookDetails__blurbContent">{book.blurb}</p>
       </article>
+      <section className="reviews">
+        <h2 className="reviews__title">Reviews</h2>
+        {showReviewForm ? (
+          <ReviewForm />
+        ) : (
+          <button className="reviews__toggle">+ Add a Review?</button>
+        )}
+      </section>
     </section>
   );
 }

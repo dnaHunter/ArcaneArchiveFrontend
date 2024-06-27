@@ -35,6 +35,8 @@ export default function Homepage() {
 
   return (
     <section className="home">
+
+      <h2 className="home__allTitle">ALL BOOKS</h2>
       <section className="home__all">
         {bookList.map((book) => (
           <BookIcon

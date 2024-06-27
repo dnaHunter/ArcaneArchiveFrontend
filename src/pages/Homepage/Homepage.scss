@@ -4,12 +4,17 @@
 .home {
   background-color: $darkgrey;
   padding: 0.5rem 1rem;
-  
 
   &__all {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
     gap: 1rem;
+  }
+
+  &__allTitle {
+    color: white;
+    border-bottom: 1px solid white;
+    padding: 0.5rem 0;
+    margin: 0 0 1rem 0;
   }
 }

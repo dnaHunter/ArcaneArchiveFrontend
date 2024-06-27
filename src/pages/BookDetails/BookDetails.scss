@@ -2,9 +2,10 @@
 @use "../../styles/mixins" as *;
 
 .bookDetails {
-  color: white;
+  
   &__hero {
-    background-color: #002e05;
+    background-color: $herogreen;
+    color: white;
     padding: 1rem;
     display: flex;
     gap: 1rem;
@@ -37,6 +38,16 @@
   }
 
   &__cover {
-    width: 10rem;
+    width: 9rem;
+  }
+
+  &__blurb{
+    color: white;
+    background-color: $darkgrey;
+    padding: 1rem;
+  }
+
+  &__blurbTitle{
+    margin-top: 0;
   }
 }

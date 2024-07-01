@@ -23,6 +23,7 @@ export default function ReviewForm() {
         className="newReview__area"
         placeholder="I liked ..."
       ></textarea>
+      <button className="newReview__button">Review</button>
     </form>
   );
 }

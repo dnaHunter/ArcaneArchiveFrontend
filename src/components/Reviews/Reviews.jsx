@@ -44,7 +44,7 @@ export default function Reviews({ bookID }) {
     <section className="reviews">
       <h2 className="reviews__title">Reviews</h2>
       {showReviewForm ? (
-        <ReviewForm setShow={setShowReviewForm} />
+        <ReviewForm getReviews={getReviews} setShow={setShowReviewForm} />
       ) : (
         toggleButton
       )}

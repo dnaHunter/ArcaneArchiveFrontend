@@ -67,4 +67,8 @@
       justify-content: flex-end;
     }
   }
+
+  &__input-error{
+    border: 1px solid $errorred;
+  }
 }

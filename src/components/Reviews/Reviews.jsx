@@ -14,6 +14,7 @@ export default function Reviews({ bookID }) {
   async function getReviews() {
     try {
       const { data } = await axios.get(`${BACKEND_URL}/reviews/${bookID}`);
+      console.log(data);
 
       setReviews(data);
     } catch (error) {

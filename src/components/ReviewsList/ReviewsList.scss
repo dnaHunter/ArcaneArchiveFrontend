@@ -1,0 +1,7 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.list {
+  margin: 0.5rem 0;
+  border-top: 1px solid black;
+}

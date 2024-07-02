@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ReviewForm from "../ReviewForm/ReviewForm";
 import "./Reviews.scss";
 import axios from "axios";
+import ReviewsList from "../ReviewsList/ReviewsList";
 
 export default function Reviews({ bookID }) {
   const [showReviewForm, setShowReviewForm] = useState(false);
@@ -21,16 +22,29 @@ export default function Reviews({ bookID }) {
     }
   }
 
+  useEffect(() => {
+    getReviews();
+  }, []);
+
   const toggleButton = (
     <button className="reviews__toggle" onClick={() => setShowReviewForm(true)}>
       + Add a Review?
     </button>
   );
 
+  if (error) {
+    return <p>{error.message}</p>;
+  }
+
+  if (!reviews) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <section className="reviews">
       <h2 className="reviews__title">Reviews</h2>
       {showReviewForm ? <ReviewForm /> : toggleButton}
+      <ReviewsList reviews={reviews} />
     </section>
   );
 }

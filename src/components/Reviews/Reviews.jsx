@@ -14,7 +14,6 @@ export default function Reviews({ bookID }) {
   async function getReviews() {
     try {
       const { data } = await axios.get(`${BACKEND_URL}/reviews/${bookID}`);
-      console.log(data);
 
       setReviews(data);
     } catch (error) {
@@ -44,7 +43,11 @@ export default function Reviews({ bookID }) {
   return (
     <section className="reviews">
       <h2 className="reviews__title">Reviews</h2>
-      {showReviewForm ? <ReviewForm /> : toggleButton}
+      {showReviewForm ? (
+        <ReviewForm setShow={setShowReviewForm} />
+      ) : (
+        toggleButton
+      )}
       <ReviewsList reviews={reviews} />
     </section>
   );

@@ -4,13 +4,28 @@
 .review {
   background-color: $reviewgrey;
   box-shadow: 4px 4px 5px 0px rgba(0, 21, 4, 0.534);
-  margin: 1rem .5rem;
+  margin: 1rem 0.5rem;
   padding: 0.5rem;
 
   &__top {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid $herogreen;
+  }
+
+  &__title {
+    margin-bottom: 0;
+  }
+
+  &__username {
+    margin-top: 0;
+    font-size: 0.9rem;
+    color: $darkgrey;
+  }
+
+  &__time {
+    color: $darkgrey;
+    font-size: 0.9rem;
   }
 }

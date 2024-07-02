@@ -2,6 +2,7 @@
 @use "../../styles/mixins" as *;
 
 .list {
-  margin: 0.5rem 0;
-  border-top: 1px solid black;
+  margin: 2rem 0;
+  border-top:1px solid $herogreen;
+  padding: 1rem 0;
 }

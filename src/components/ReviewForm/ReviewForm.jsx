@@ -1,6 +1,6 @@
 import "./ReviewForm.scss";
 
-export default function ReviewForm() {
+export default function ReviewForm({ setShow }) {
   return (
     <form className="newReview">
       <label htmlFor="title" className="newReview__label">
@@ -23,7 +23,17 @@ export default function ReviewForm() {
         className="newReview__area"
         placeholder="I liked ..."
       ></textarea>
-      <button className="newReview__button">Review</button>
+
+      <div className="newReview__actions">
+        <button className="newReview__button">Review</button>
+        <button
+          type="button"
+          onClick={() => setShow(false)}
+          className="newReview__cancel"
+        >
+          Cancel
+        </button>
+      </div>
     </form>
   );
 }

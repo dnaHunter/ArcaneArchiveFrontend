@@ -1,11 +1,9 @@
 import { Link, useParams } from "react-router-dom";
-import "./BookDetails.scss";
+import "./Reader.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Reviews from "../../components/Reviews/Reviews";
-import Reader from "../Reader/Reader";
 
-export default function BookDetails() {
+export default function Reader() {
   const [book, setBook] = useState(null);
   const [error, setError] = useState(false);
 
@@ -36,37 +34,29 @@ export default function BookDetails() {
   }
 
   return (
-    <section className="bookDetails">
-      <article className="bookDetails__hero">
+    <section className="reader">
+      <article className="hero">
+        {" "}
         <img
           src={`${BACKEND_URL}/${book.coverImagePath}`}
           alt=""
           className="bookDetails__cover"
         />
-
         <div className="bookDetails__right">
           <div className="bookDetails__info">
             <h1 className="bookDetails__title">{book.title}</h1>
             <p className="bookDetails__author">{book.author}</p>
           </div>
           <div className="bookDetails__actions">
-            {book.locked ? (
-              <Link className="bookDetails__button bookDetails__button--locked">
-                LOCKED
-              </Link>
-            ) : (
-              <Link to="reader" className="bookDetails__button">
-                READ
-              </Link>
-            )}
+            <Link
+              to={`/books/${id}`}
+              className="bookDetails__button bookDetails__button--locked"
+            >
+              REVIEW
+            </Link>
           </div>
         </div>
       </article>
-      <article className="bookDetails__blurb">
-        <h2 className="bookDetails__blurbTitle">Blurb</h2>
-        <p className="bookDetails__blurbContent">{book.blurb}</p>
-      </article>
-      <Reviews bookID={id} />
     </section>
   );
 }

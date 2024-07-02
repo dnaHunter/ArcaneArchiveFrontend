@@ -33,6 +33,16 @@
     &:hover {
       background-color: $darkwhite;
     }
+
+    &--locked{
+      background-color: $darkgrey;
+      color: $offwhite;
+      cursor: default;
+
+      &:hover {
+        background-color: $darkwhite;
+      }
+    }
   }
 
   &__cover {

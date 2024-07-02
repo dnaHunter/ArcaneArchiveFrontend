@@ -2,13 +2,12 @@ import { Link, useParams } from "react-router-dom";
 import "./BookDetails.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import ReviewForm from "../../components/ReviewForm/ReviewForm";
 import Reviews from "../../components/Reviews/Reviews";
 
 export default function BookDetails() {
   const [book, setBook] = useState(null);
   const [error, setError] = useState(false);
-  const [showReviewForm, setShowReviewForm] = useState(false);
+
   const { id } = useParams();
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -35,12 +34,6 @@ export default function BookDetails() {
     return <p>Loading...</p>;
   }
 
-  const toggleButton = (
-    <button className="reviews__toggle" onClick={() => setShowReviewForm(true)}>
-      + Add a Review?
-    </button>
-  );
-
   return (
     <section className="bookDetails">
       <article className="bookDetails__hero">
@@ -64,7 +57,7 @@ export default function BookDetails() {
         <h2 className="bookDetails__blurbTitle">Blurb</h2>
         <p className="bookDetails__blurbContent">{book.blurb}</p>
       </article>
-      <Reviews />
+      <Reviews bookID={id}/>
     </section>
   );
 }

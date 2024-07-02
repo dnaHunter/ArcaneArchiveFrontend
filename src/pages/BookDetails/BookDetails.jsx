@@ -3,6 +3,7 @@ import "./BookDetails.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ReviewForm from "../../components/ReviewForm/ReviewForm";
+import Reviews from "../../components/Reviews/Reviews";
 
 export default function BookDetails() {
   const [book, setBook] = useState(null);
@@ -35,10 +36,7 @@ export default function BookDetails() {
   }
 
   const toggleButton = (
-    <button
-      className="reviews__toggle"
-      onClick={() => setShowReviewForm(true)}
-    >
+    <button className="reviews__toggle" onClick={() => setShowReviewForm(true)}>
       + Add a Review?
     </button>
   );
@@ -66,10 +64,7 @@ export default function BookDetails() {
         <h2 className="bookDetails__blurbTitle">Blurb</h2>
         <p className="bookDetails__blurbContent">{book.blurb}</p>
       </article>
-      <section className="reviews">
-        <h2 className="reviews__title">Reviews</h2>
-        {showReviewForm ? <ReviewForm /> : toggleButton}
-      </section>
+      <Reviews />
     </section>
   );
 }

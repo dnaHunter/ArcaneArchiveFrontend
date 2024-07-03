@@ -33,9 +33,9 @@ export default function Scroll() {
   if (!textFile) {
     return <p>Loading...</p>;
   }
-  // /(\r\n|\r|\n)/
+  //Splits onto new element if it is a new line at the end on a paragraph and not in the middle of a sentence or word.
   const textArray = textFile.split(/(\r\n    \r\n|\r\n\r\n|\r\n )/);
-  console.log(textArray);
+
   return (
     <section className="scroll">
       {textArray.map((line) => (

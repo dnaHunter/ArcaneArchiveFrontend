@@ -2,9 +2,18 @@
 @use "../../styles/mixins" as *;
 
 .scroll {
-  background-color: $offwhite;
-  width: 40rem;
-  margin: auto;
+  background-color: white;
+  margin: 1rem;
   box-shadow: 4px 4px 5px 0px rgba(0, 21, 4, 0.534);
-  text-align: center;
+  padding: 0.5rem;
+
+  @include tablet {
+    margin: 0.5rem 3rem;
+    padding: 0.5rem 1rem;
+  }
+
+  @include desktop {
+    width: 72rem;
+    margin: 1rem auto;
+  }
 }

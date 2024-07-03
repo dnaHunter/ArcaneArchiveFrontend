@@ -319,6 +319,8 @@ I will use authenticaition to have users who can reserve books and leave reviews
 
 ## Nice-to-haves
 
+- Format text file more
+- HTML file
 - Change display details on the reader
 - Filter books on genre
 - Search for books

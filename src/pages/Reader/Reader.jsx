@@ -36,21 +36,20 @@ export default function Reader() {
   return (
     <section className="reader">
       <article className="hero">
-        {" "}
         <img
           src={`${BACKEND_URL}/${book.coverImagePath}`}
           alt=""
-          className="bookDetails__cover"
+          className="hero__cover"
         />
-        <div className="bookDetails__right">
-          <div className="bookDetails__info">
-            <h1 className="bookDetails__title">{book.title}</h1>
-            <p className="bookDetails__author">{book.author}</p>
+        <div className="hero__right">
+          <div className="hero__info">
+            <h1 className="hero__title">{book.title}</h1>
+            <p className="hero__author">{book.author}</p>
           </div>
-          <div className="bookDetails__actions">
+          <div className="hero__actions">
             <Link
               to={`/books/${id}`}
-              className="bookDetails__button bookDetails__button--locked"
+              className="hero__button"
             >
               REVIEW
             </Link>

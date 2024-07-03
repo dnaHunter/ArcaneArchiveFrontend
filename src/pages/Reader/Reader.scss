@@ -1,0 +1,37 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.hero {
+  background-color: $herogreen;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+
+  &__right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__button {
+    display: block;
+    text-align: center;
+    width: 100%;
+    padding: 0.5rem 0;
+    border: 0;
+    border-radius: 10px;
+    background-color: $offwhite;
+    text-decoration: none;
+    color: black;
+
+    &:hover {
+      background-color: $darkwhite;
+    }
+  }
+  
+  &__cover {
+    width: 9rem;
+  }
+}

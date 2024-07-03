@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import "./Reader.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Scroll from "../../components/Scroll/Scroll";
 
 export default function Reader() {
   const [book, setBook] = useState(null);
@@ -47,15 +48,14 @@ export default function Reader() {
             <p className="hero__author">{book.author}</p>
           </div>
           <div className="hero__actions">
-            <Link
-              to={`/books/${id}`}
-              className="hero__button"
-            >
+            <Link to={`/books/${id}`} className="hero__button">
               REVIEW
             </Link>
           </div>
         </div>
       </article>
+
+      {book.locked ? <p>Locked</p> : <Scroll />}
     </section>
   );
 }

@@ -1,0 +1,10 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.scroll {
+  background-color: $offwhite;
+  width: 40rem;
+  margin: auto;
+  box-shadow: 4px 4px 5px 0px rgba(0, 21, 4, 0.534);
+  text-align: center;
+}

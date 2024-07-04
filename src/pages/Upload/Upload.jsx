@@ -1,14 +1,20 @@
+import { useState } from "react";
 import "./Upload.scss";
 
 export default function Upload() {
+  const [showImg, setShowImg] = useState(false);
   return (
     <section className="upload">
       <h1 className="upload__title">UPLOAD NEW BOOK</h1>
 
       <form className="upload__form">
-        {<img className="upload" />}
+        {showImg ? (
+          <img className="upload__cover" />
+        ) : (
+          <div className="upload__placeholder-cover"></div>
+        )}
 
-        <label htmlFor="cover" className="form__label">
+        <label htmlFor="cover" className="upload__label">
           COVER IMAGE
         </label>
         <button
@@ -20,22 +26,33 @@ export default function Upload() {
           UPLOAD
         </button>
 
-        <label htmlFor="title" className="form__label">
+        <label htmlFor="title" className="upload__label">
           TITLE
         </label>
-        <input type="text" name="title" id="title" className="upload__title" />
+        <input
+          placeholder="Title"
+          type="text"
+          name="title"
+          id="title"
+          className="upload__input-title"
+        />
 
-        <label htmlFor="title" className="form__label">
+        <label htmlFor="title" className="upload__label">
           BLURB
         </label>
-        <textarea name="blurb" id="blurb" className="form__blurb"></textarea>
+        <textarea
+          placeholder="Blurb"
+          name="blurb"
+          id="blurb"
+          className="upload__blurb"
+        ></textarea>
 
-        <label htmlFor="textFile" className="form__label">
+        <label htmlFor="textFile" className="upload__label">
           TEXT FILE
         </label>
         <button
           type="button"
-          className="form__text-file"
+          className="upload__text-file"
           id="textFile"
           name="textFile"
         >

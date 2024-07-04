@@ -2,14 +2,32 @@ import { useState } from "react";
 import "./Upload.scss";
 
 export default function Upload() {
-  const [showImg, setShowImg] = useState(false);
+  const [img, setImg] = useState(null);
+  const [text, setText] = useState(null);
+
+  function handleCoverChange(e) {
+    if (e.target.files) {
+      setImg(e.target.files[0]);
+    }
+  }
+
+  function handleTextChange(e) {
+    if (e.target.files) {
+      setText(e.target.files[0]);
+      console.log(e.target.files[0]);
+    }
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+  }
   return (
     <section className="upload">
       <h1 className="upload__title">UPLOAD NEW BOOK</h1>
 
       <form className="upload__form">
-        {showImg ? (
-          <img className="upload__cover" />
+        {img ? (
+          <img src={URL.createObjectURL(img)} className="upload__cover" />
         ) : (
           <div className="upload__placeholder-cover"></div>
         )}
@@ -17,14 +35,16 @@ export default function Upload() {
         <label htmlFor="cover" className="upload__label">
           COVER IMAGE
         </label>
-        <button
-          type="button"
-          id="cover"
-          name="cover"
-          className="upload__cover-button"
-        >
+        <label className="upload__cover-button">
+          <input
+            onChange={handleCoverChange}
+            type="file"
+            id="cover"
+            name="cover"
+            className="upload__cover-input"
+          />
           UPLOAD
-        </button>
+        </label>
 
         <label htmlFor="title" className="upload__label">
           TITLE
@@ -50,14 +70,17 @@ export default function Upload() {
         <label htmlFor="textFile" className="upload__label">
           TEXT FILE
         </label>
-        <button
-          type="button"
-          className="upload__text-file"
-          id="textFile"
-          name="textFile"
-        >
+        <label className="upload__text-file">
+          <input
+            onChange={handleTextChange}
+            type="file"
+            className="upload__text-file-input"
+            id="textFile"
+            name="textFile"
+          />
           UPLOAD
-        </button>
+        </label>
+        {text && <p className="upload__filename">{text.name}</p>}
       </form>
     </section>
   );

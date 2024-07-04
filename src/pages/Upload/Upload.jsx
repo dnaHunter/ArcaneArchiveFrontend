@@ -81,6 +81,7 @@ export default function Upload() {
           UPLOAD
         </label>
         {text && <p className="upload__filename">{text.name}</p>}
+        <button className="upload__submit">SUBMIT</button>
       </form>
     </section>
   );

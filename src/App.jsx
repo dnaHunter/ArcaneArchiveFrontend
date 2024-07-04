@@ -4,6 +4,7 @@ import "./App.scss";
 import Homepage from "./pages/Homepage/Homepage";
 import BookDetails from "./pages/BookDetails/BookDetails";
 import Reader from "./pages/Reader/Reader";
+import Upload from "./pages/Upload/Upload";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/homepage" element={<Homepage />} />
         <Route path="/books/:id" element={<BookDetails />} />
         <Route path="/books/:id/reader" element={<Reader />} />
+        <Route path="/books/upload" element={<Upload />} />
       </Routes>
     </BrowserRouter>
   );

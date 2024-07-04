@@ -2,6 +2,7 @@ import axios from "axios";
 import "./Scroll.scss";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import {v4 as uuid} from "uuid";
 
 export default function Scroll() {
   const [textFile, setTextFile] = useState(null);
@@ -51,7 +52,7 @@ export default function Scroll() {
   return (
     <section className="scroll">
       {textArray.map((line) => (
-        <p key={1} className="scroll__line">
+        <p key={uuid()} className="scroll__line">
           {line}
         </p>
       ))}

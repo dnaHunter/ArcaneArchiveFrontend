@@ -13,7 +13,6 @@ export default function Scroll() {
   async function getText() {
     try {
       const { data } = await axios.get(`${BACKEND_URL}/books/${id}/reader`);
-
       setTextFile(data);
     } catch (error) {
       console.error(error);
@@ -24,7 +23,9 @@ export default function Scroll() {
   async function lockHeartbeat() {
     try {
       const { data } = await axios.patch(`${BACKEND_URL}/books/${id}/beat`);
-    } catch (error) {}
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   useEffect(() => {
@@ -33,7 +34,7 @@ export default function Scroll() {
   }, []);
 
   if (error) {
-    console.log(error);
+    console.error(error);
     return <p>{error.messsage}</p>;
   }
 
@@ -50,7 +51,9 @@ export default function Scroll() {
   return (
     <section className="scroll">
       {textArray.map((line) => (
-        <p className="scroll__line">{line}</p>
+        <p key={1} className="scroll__line">
+          {line}
+        </p>
       ))}
     </section>
   );

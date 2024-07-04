@@ -237,7 +237,7 @@ Reveiw endpoints
       "title": "Not that good",
       "body": "Best Book",
     }
-  ] 
+  ]
   ```
 
 - post "/reviews" creates a new review
@@ -319,6 +319,7 @@ I will use authenticaition to have users who can reserve books and leave reviews
 
 ## Nice-to-haves
 
+- Reader page refresh bug
 - Format text file more
 - HTML file
 - Change display details on the reader

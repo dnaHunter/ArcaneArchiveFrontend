@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Upload.scss";
+import axios from "axios";
 
 export default function Upload() {
   const [img, setImg] = useState(null);
@@ -18,14 +19,48 @@ export default function Upload() {
     }
   }
 
-  function handleSubmit(e) {
+  function validateInput(event) {
+    console.log("validate");
+    const value = event.target.value;
+
+    if (!value) {
+      event.target.classList.add("upload__input-error");
+    } else {
+      event.target.classList.remove("upload__input-error");
+    }
+  }
+
+  async function handleSubmit(e) {
     e.preventDefault();
+
+    const title = e.target.title.value;
+    const blurb = e.target.blurb.value;
+
+    if (!title) {
+      e.target.title.classList.add("newReview__input-error");
+      return;
+    } else {
+      e.target.title.classList.remove("newReview__input-error");
+    }
+
+    if (!blurb) {
+      e.target.blurb.classList.add("newReview__input-error");
+      return;
+    } else {
+      e.target.blurb.classList.remove("newReview__input-error");
+    }
+
+    const data = new FormData();
+
+    try {
+      const {data} = await axios.post("url", data)
+    } catch (error) {}
   }
   return (
     <section className="upload">
       <h1 className="upload__title">UPLOAD NEW BOOK</h1>
 
-      <form className="upload__form">
+      <form onSubmit={handleSubmit} className="upload__form">
         {img ? (
           <img src={URL.createObjectURL(img)} className="upload__cover" />
         ) : (
@@ -50,6 +85,7 @@ export default function Upload() {
           TITLE
         </label>
         <input
+          onBlur={validateInput}
           placeholder="Title"
           type="text"
           name="title"
@@ -61,6 +97,7 @@ export default function Upload() {
           BLURB
         </label>
         <textarea
+          onBlur={validateInput}
           placeholder="Blurb"
           name="blurb"
           id="blurb"

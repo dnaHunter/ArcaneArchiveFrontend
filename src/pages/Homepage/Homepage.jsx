@@ -12,7 +12,6 @@ export default function Homepage() {
   async function getBookList() {
     try {
       const { data } = await axios.get(`${BACKEND_URL}/books`);
-      console.log(`${BACKEND_URL}/books`);
 
       setBookList(data);
     } catch (error) {
@@ -25,7 +24,7 @@ export default function Homepage() {
   }, []);
 
   if (error) {
-    console.log(error);
+    console.error(error);
     return <p>{error.messsage}</p>;
   }
 

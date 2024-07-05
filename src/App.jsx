@@ -6,6 +6,7 @@ import BookDetails from "./pages/BookDetails/BookDetails";
 import Reader from "./pages/Reader/Reader";
 import Upload from "./pages/Upload/Upload";
 import Footer from "./components/Footer/Footer";
+import Register from "./pages/Register/Register";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/books/:id" element={<BookDetails />} />
           <Route path="/books/:id/reader" element={<Reader />} />
           <Route path="/books/upload" element={<Upload />} />
+          <Route path="/register" element={<Register />} />
         </Routes>
         <Footer />
       </section>

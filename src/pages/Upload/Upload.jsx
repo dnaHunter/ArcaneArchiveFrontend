@@ -53,9 +53,10 @@ export default function Upload() {
     const data = new FormData();
 
     try {
-      const {data} = await axios.post("url", data)
+      const { data } = await axios.post("", data);
     } catch (error) {}
   }
+
   return (
     <section className="upload">
       <h1 className="upload__title">UPLOAD NEW BOOK</h1>
@@ -66,58 +67,82 @@ export default function Upload() {
         ) : (
           <div className="upload__placeholder-cover"></div>
         )}
+        <div className="upload__label-input">
+          <label htmlFor="cover" className="upload__label">
+            COVER IMAGE
+          </label>
+          <label className="upload__cover-button">
+            <input
+              onChange={handleCoverChange}
+              type="file"
+              id="cover"
+              name="cover"
+              className="upload__cover-input"
+            />
+            UPLOAD
+          </label>
+        </div>
 
-        <label htmlFor="cover" className="upload__label">
-          COVER IMAGE
-        </label>
-        <label className="upload__cover-button">
+        <div className="upload__label-input">
+          <label htmlFor="title" className="upload__label">
+            TITLE
+          </label>
           <input
-            onChange={handleCoverChange}
-            type="file"
-            id="cover"
-            name="cover"
-            className="upload__cover-input"
+            onBlur={validateInput}
+            placeholder="Title"
+            type="text"
+            name="title"
+            id="title"
+            className="upload__input-title"
           />
-          UPLOAD
-        </label>
+        </div>
 
-        <label htmlFor="title" className="upload__label">
-          TITLE
-        </label>
-        <input
-          onBlur={validateInput}
-          placeholder="Title"
-          type="text"
-          name="title"
-          id="title"
-          className="upload__input-title"
-        />
-
-        <label htmlFor="title" className="upload__label">
-          BLURB
-        </label>
-        <textarea
-          onBlur={validateInput}
-          placeholder="Blurb"
-          name="blurb"
-          id="blurb"
-          className="upload__blurb"
-        ></textarea>
-
-        <label htmlFor="textFile" className="upload__label">
-          TEXT FILE
-        </label>
-        <label className="upload__text-file">
+        {/* AUTHOR */}
+        <div className="upload__label-input">
+          <label htmlFor="author" className="upload__label">
+            AUTHOR
+          </label>
           <input
-            onChange={handleTextChange}
-            type="file"
-            className="upload__text-file-input"
-            id="textFile"
-            name="textFile"
+            onBlur={validateInput}
+            placeholder="Author"
+            type="text"
+            name="author"
+            id="author"
+            className="upload__input-author"
           />
-          UPLOAD
-        </label>
-        {text && <p className="upload__filename">{text.name}</p>}
+        </div>
+
+        <div className="upload__label-input">
+          <label htmlFor="title" className="upload__label upload__label--top">
+            BLURB
+          </label>
+          <textarea
+            onBlur={validateInput}
+            placeholder="Blurb"
+            name="blurb"
+            id="blurb"
+            className="upload__blurb"
+          ></textarea>
+        </div>
+
+        <div className="upload__label-input">
+          <label htmlFor="textFile" className="upload__label">
+            TEXT FILE
+          </label>
+          <div className="upload__textRight">
+            <label className="upload__text-file">
+              <input
+                onChange={handleTextChange}
+                type="file"
+                className="upload__text-file-input"
+                id="textFile"
+                name="textFile"
+              />
+              UPLOAD
+            </label>
+            {text && <p className="upload__filename">{text.name}</p>}
+          </div>
+        </div>
         <button className="upload__submit">SUBMIT</button>
       </form>
     </section>

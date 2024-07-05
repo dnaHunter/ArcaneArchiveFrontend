@@ -2,22 +2,39 @@
 @use "../../styles/mixins" as *;
 
 .header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.5rem 1rem;
   background-color: $darkgreen;
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+
+    @include tablet {
+      padding: 0.5rem $tabletMargin;
+    }
+
+    @include desktop {
+      max-width: $maxWidth;
+      margin: 0 auto;
+    }
+  }
 
   &__logo {
     text-decoration: none;
     color: white;
   }
 
-  &__login {
+  &__link {
     text-decoration: none;
     color: white;
     background-color: $green;
     padding: 0.5rem;
     border-radius: 10px;
+  }
+
+  &__nav {
+    display: flex;
+    gap: 0.5rem;
   }
 }

@@ -3,7 +3,19 @@
 
 .home {
   background-color: $darkgrey;
-  padding: 0.5rem 1rem;
+
+  &__wrapper {
+    padding: 0.5rem 1rem;
+    
+    @include tablet {
+      padding: 0.5rem $tabletMargin;
+    }
+
+    @include desktop {
+      max-width: $maxWidth;
+      margin: 0 auto;
+    }
+  }
 
   &__all {
     display: grid;

@@ -34,19 +34,20 @@ export default function Homepage() {
 
   return (
     <section className="home">
-
-      <h2 className="home__allTitle">ALL BOOKS</h2>
-      <section className="home__all">
-        {bookList.map((book) => (
-          <BookIcon
-            key={book.id}
-            id={book.id}
-            URL={book.coverImagePath}
-            title={book.title}
-            author={book.author}
-          />
-        ))}
-      </section>
+      <div className="home__wrapper">
+        <h2 className="home__allTitle">ALL BOOKS</h2>
+        <section className="home__all">
+          {bookList.map((book) => (
+            <BookIcon
+              key={book.id}
+              id={book.id}
+              URL={book.coverImagePath}
+              title={book.title}
+              author={book.author}
+            />
+          ))}
+        </section>
+      </div>
     </section>
   );
 }

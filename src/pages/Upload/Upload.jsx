@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./Upload.scss";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Upload() {
   const [img, setImg] = useState(null);
@@ -21,12 +21,10 @@ export default function Upload() {
   function handleTextChange(e) {
     if (e.target.files) {
       setText(e.target.files[0]);
-      console.log(e.target.files[0]);
     }
   }
 
   function validateInput(event) {
-    console.log("validate");
     const value = event.target.value;
 
     if (!value) {

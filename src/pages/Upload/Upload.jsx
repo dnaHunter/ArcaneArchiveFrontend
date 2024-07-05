@@ -1,10 +1,16 @@
 import { useState } from "react";
 import "./Upload.scss";
 import axios from "axios";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function Upload() {
   const [img, setImg] = useState(null);
   const [text, setText] = useState(null);
+  const [submitError, setSubmitError] = useState(false);
+
+  const nav = useNavigate();
+
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
   function handleCoverChange(e) {
     if (e.target.files) {
@@ -35,6 +41,9 @@ export default function Upload() {
 
     const title = e.target.title.value;
     const blurb = e.target.blurb.value;
+    const author = e.target.author.value;
+    const coverFile = e.target.cover.files[0];
+    const textFile = e.target.textFile.files[0];
 
     if (!title) {
       e.target.title.classList.add("newReview__input-error");
@@ -50,11 +59,31 @@ export default function Upload() {
       e.target.blurb.classList.remove("newReview__input-error");
     }
 
-    const data = new FormData();
+    if (!author) {
+      e.target.author.classList.add("newReview__input-error");
+      return;
+    } else {
+      e.target.author.classList.remove("newReview__input-error");
+    }
+
+    const bookData = new FormData();
+    bookData.append("title", title);
+    bookData.append("blurb", blurb);
+    bookData.append("author", author);
+    bookData.append("coverFile", coverFile);
+    bookData.append("textFile", textFile);
 
     try {
-      const { data } = await axios.post("", data);
-    } catch (error) {}
+      const { data } = await axios.post(`${BACKEND_URL}/books`, bookData);
+
+      nav("/");
+    } catch (error) {
+      console.error(error);
+      setSubmitError(true);
+      setTimeout(() => {
+        setSubmitError(false);
+      }, 30000);
+    }
   }
 
   return (
@@ -145,6 +174,11 @@ export default function Upload() {
         </div>
         <button className="upload__submit">SUBMIT</button>
       </form>
+      {submitError && (
+        <p className="upload__submit-error">
+          There was a problem uploading the book. Try again later.
+        </p>
+      )}
     </section>
   );
 }

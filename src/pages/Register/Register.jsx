@@ -4,42 +4,45 @@ export default function Register() {
   return (
     <section className="register">
       <div className="register__content">
-        <h1 className="register__title">ARCANE ARCHIVE</h1>
-        <h2 className="register__subtitle">REGISTER</h2>
+        <h1 className="register__title">REGISTER</h1>
         <form className="register__form">
           <div className="register__label-input">
-            <label>
+            <label htmlFor="username" className="register__label">
               USERNAME
-              <input
-                placeholder="Username"
-                name="username"
-                type="text"
-                className="register__username"
-              />
             </label>
+            <input
+              placeholder="Username"
+              name="username"
+              type="text"
+              id="username"
+              className="register__username"
+            />
           </div>
 
           <div className="register__label-input">
-            <label>
+            <label htmlFor="password" className="register__label">
               PASSWORD
-              <input
-                name="password"
-                type="password"
-                className="register__password"
-              />
             </label>
+            <input
+              name="password"
+              type="password"
+              id="password"
+              className="register__password"
+            />
           </div>
 
           <div className="register__label-input">
-            <label>
-              CONFIRM PASSWORD
-              <input
-                name="password"
-                type="password"
-                className="register__password"
-              />
+            <label htmlFor="cpassword" className="register__label">
+              CONFIRM PASSWORD{" "}
             </label>
+            <input
+              name="cpassword"
+              id="cpassword"
+              type="password"
+              className="register__password"
+            />
           </div>
+          <button className="register__button">REGISTER</button>
         </form>
       </div>
     </section>

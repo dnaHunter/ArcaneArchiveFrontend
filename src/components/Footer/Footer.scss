@@ -1,0 +1,6 @@
+@use "../../styles/variables" as *;
+
+.footer {
+  flex-grow: 1;
+  background-color: $darkgrey;
+}

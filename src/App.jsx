@@ -5,18 +5,22 @@ import Homepage from "./pages/Homepage/Homepage";
 import BookDetails from "./pages/BookDetails/BookDetails";
 import Reader from "./pages/Reader/Reader";
 import Upload from "./pages/Upload/Upload";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
     <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Navigate to="/homepage" />} />
-        <Route path="/homepage" element={<Homepage />} />
-        <Route path="/books/:id" element={<BookDetails />} />
-        <Route path="/books/:id/reader" element={<Reader />} />
-        <Route path="/books/upload" element={<Upload />} />
-      </Routes>
+      <section className="app__wrapper">
+        <Header />
+        <Routes>
+          <Route path="/" element={<Navigate to="/homepage" />} />
+          <Route path="/homepage" element={<Homepage />} />
+          <Route path="/books/:id" element={<BookDetails />} />
+          <Route path="/books/:id/reader" element={<Reader />} />
+          <Route path="/books/upload" element={<Upload />} />
+        </Routes>
+        <Footer />
+      </section>
     </BrowserRouter>
   );
 }

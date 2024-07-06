@@ -33,6 +33,15 @@
     border-radius: 10px;
   }
 
+  &__log-out{
+    color: white;
+    background-color: $green;
+    padding: 0.5rem;
+    border-radius: 10px;
+    border: 0;
+    cursor: pointer;
+  }
+
   &__nav {
     display: flex;
     gap: 0.5rem;

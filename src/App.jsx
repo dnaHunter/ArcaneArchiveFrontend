@@ -33,7 +33,6 @@ function App() {
       );
       console.log(data);
 
-      // TODO: Ensure this works upon login without having to refresh the page
       setUser(data);
     } catch (error) {
       console.error(error);
@@ -48,7 +47,7 @@ function App() {
   return (
     <BrowserRouter>
       <section className="app__wrapper">
-        <Header/>
+        <Header user={user} check={checkIsLoggedIn} />
         <Routes>
           <Route path="/" element={<Navigate to="/homepage" />} />
           <Route path="/homepage" element={<Homepage />} />

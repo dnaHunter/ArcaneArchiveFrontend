@@ -7,6 +7,7 @@ import Reader from "./pages/Reader/Reader";
 import Upload from "./pages/Upload/Upload";
 import Footer from "./components/Footer/Footer";
 import Register from "./pages/Register/Register";
+import Login from "./pages/Login/Login";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/books/:id/reader" element={<Reader />} />
           <Route path="/books/upload" element={<Upload />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
         <Footer />
       </section>

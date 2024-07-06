@@ -51,8 +51,6 @@ export default function Register() {
     try {
       const { data } = await axios.post(`${BACKEND_URL}/users/`, newUser);
 
-      console.log(data);
-
       nav("/login");
     } catch (error) {
       if (error.response.data.message === "Existing user with that username") {

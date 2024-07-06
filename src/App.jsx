@@ -15,13 +15,9 @@ function App() {
   const [user, setUser] = useState(null);
 
   async function checkIsLoggedIn() {
-    console.log("logged");
     const token = sessionStorage.getItem("token");
 
-    console.log(token);
-
     if (!token) {
-      console.log("token null");
       setUser(null);
       return;
     }
@@ -31,7 +27,6 @@ function App() {
         import.meta.env.VITE_BACKEND_URL + "/users/me",
         { headers: { Authorization: `Bearer ${token}` } }
       );
-      console.log(data);
 
       setUser(data);
     } catch (error) {
@@ -51,7 +46,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate to="/homepage" />} />
           <Route path="/homepage" element={<Homepage />} />
-          <Route path="/books/:id" element={<BookDetails />} />
+          <Route path="/books/:id" element={<BookDetails user={user} />} />
           <Route path="/books/:id/reader" element={<Reader />} />
           <Route path="/books/upload" element={<Upload />} />
           <Route path="/register" element={<Register />} />

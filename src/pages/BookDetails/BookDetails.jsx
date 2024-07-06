@@ -5,7 +5,7 @@ import axios from "axios";
 import Reviews from "../../components/Reviews/Reviews";
 import Reader from "../Reader/Reader";
 
-export default function BookDetails() {
+export default function BookDetails({ user }) {
   const [book, setBook] = useState(null);
   const [error, setError] = useState(false);
 
@@ -66,7 +66,7 @@ export default function BookDetails() {
         <h2 className="bookDetails__blurbTitle">Blurb</h2>
         <p className="bookDetails__blurbContent">{book.blurb}</p>
       </article>
-      <Reviews bookID={id} />
+      <Reviews bookID={id} user={user} />
     </section>
   );
 }

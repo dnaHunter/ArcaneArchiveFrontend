@@ -4,7 +4,7 @@ import "./Reviews.scss";
 import axios from "axios";
 import ReviewsList from "../ReviewsList/ReviewsList";
 
-export default function Reviews({ bookID }) {
+export default function Reviews({ bookID, user }) {
   const [showReviewForm, setShowReviewForm] = useState(false);
   const [reviews, setReviews] = useState(null);
   const [error, setError] = useState(false);
@@ -44,7 +44,7 @@ export default function Reviews({ bookID }) {
     <section className="reviews">
       <h2 className="reviews__title">Reviews</h2>
       {showReviewForm ? (
-        <ReviewForm getReviews={getReviews} setShow={setShowReviewForm} />
+        <ReviewForm getReviews={getReviews} setShow={setShowReviewForm} user={user} />
       ) : (
         toggleButton
       )}

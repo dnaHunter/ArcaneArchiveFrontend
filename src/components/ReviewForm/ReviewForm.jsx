@@ -2,7 +2,7 @@ import axios from "axios";
 import "./ReviewForm.scss";
 import { useParams } from "react-router-dom";
 
-export default function ReviewForm({ setShow, getReviews }) {
+export default function ReviewForm({ setShow, getReviews, user }) {
   const { id } = useParams();
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
@@ -42,7 +42,14 @@ export default function ReviewForm({ setShow, getReviews }) {
       book_id: id,
     };
 
-    const response = await axios.post(`${BACKEND_URL}/reviews`, post);
+    if (user) {
+      const token = sessionStorage.getItem("token");
+      const response = await axios.post(BACKEND_URL + "/reviews", post, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+    } else {
+      const response = await axios.post(`${BACKEND_URL}/reviews`, post);
+    }
 
     event.target.reset();
 

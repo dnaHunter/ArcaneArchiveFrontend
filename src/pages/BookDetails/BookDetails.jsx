@@ -19,6 +19,8 @@ export default function BookDetails({ user }) {
       const { data } = await axios.get(`${BACKEND_URL}/books/${id}/borrow`, {
         headers: { Authorization: `Bearer ${token}` },
       });
+
+      getBookDetails();
     } catch (error) {
       if (error.response.data.message === "locked") {
         getBookDetails();
@@ -49,6 +51,25 @@ export default function BookDetails({ user }) {
     return <p>Loading...</p>;
   }
 
+  const bookActions =
+    book.locked && (!user || user.id !== book.lockedBy_id) ? (
+      <Link className="bookDetails__button bookDetails__button--locked">
+        LOCKED
+      </Link>
+    ) : (
+      <>
+        {user && user.id !== book.lockedBy_id && (
+          <button onClick={handleBorrow} className="bookDetails__borrow">
+            BORROW FOR A WEEK
+          </button>
+        )}
+
+        <Link to="reader" className="bookDetails__button">
+          READ
+        </Link>
+      </>
+    );
+
   return (
     <section className="bookDetails">
       <article className="bookDetails__hero">
@@ -68,28 +89,7 @@ export default function BookDetails({ user }) {
               </p>
             )}
           </div>
-          <div className="bookDetails__actions">
-            {book.locked ? (
-              <Link className="bookDetails__button bookDetails__button--locked">
-                LOCKED
-              </Link>
-            ) : (
-              <>
-                {user && (
-                  <button
-                    onClick={handleBorrow}
-                    className="bookDetails__borrow"
-                  >
-                    BORROW FOR A WEEK
-                  </button>
-                )}
-
-                <Link to="reader" className="bookDetails__button">
-                  READ
-                </Link>
-              </>
-            )}
-          </div>
+          <div className="bookDetails__actions">{bookActions}</div>
         </div>
       </article>
       <article className="bookDetails__blurb">

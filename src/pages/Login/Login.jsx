@@ -39,10 +39,9 @@ export default function Login({ checkIsLoggedIn }) {
 
     try {
       const { data } = await axios.post(`${BACKEND_URL}/users/login`, user);
-      console.log(data);
 
       sessionStorage.setItem("token", data.token);
-      
+
       checkIsLoggedIn();
       nav("/");
     } catch (error) {

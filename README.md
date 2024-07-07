@@ -39,7 +39,6 @@ Improvements that I would like to make in the future:
 - Reader page refresh bug
 - No reviews CTA
 - Format text file more
-- HTML file
 - Change display details on the reader
 - Filter books on genre
 - Search for books

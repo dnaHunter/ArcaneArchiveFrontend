@@ -21,8 +21,22 @@
   }
 
   &__logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     text-decoration: none;
     color: white;
+  }
+  &__logoimg {
+    width: 2rem;
+  }
+
+  &__name {
+    display: none;
+
+    @include tablet {
+      display: block;
+    }
   }
 
   &__link {
@@ -33,7 +47,7 @@
     border-radius: 10px;
   }
 
-  &__log-out{
+  &__log-out {
     color: white;
     background-color: $green;
     padding: 0.5rem;

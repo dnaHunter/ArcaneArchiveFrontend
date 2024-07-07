@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import "./Header.scss";
+import logo from "../../assets/Vectorlogo.svg";
 
 export default function Header({ user, check }) {
   function logOut() {
@@ -16,7 +17,8 @@ export default function Header({ user, check }) {
     <section className="header">
       <div className="header__wrapper">
         <Link to="/" className="header__logo">
-          ARCANE ARCHIVE
+          <img src={logo} alt="Logo" className="header__logoimg" />
+          <p className="header__name">ARCANE ARCHIVE</p>
         </Link>
         <nav className="header__nav">
           <Link to="/books/upload" className="header__link">

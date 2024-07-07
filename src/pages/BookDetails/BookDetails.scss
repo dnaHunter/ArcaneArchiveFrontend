@@ -51,6 +51,27 @@
       }
     }
   }
+  
+  &__borrow{
+    text-align: center;
+    width: 100%;
+    padding: 0.5rem 0;
+    border: 0;
+    border-radius: 10px;
+    background-color: $offwhite;
+    text-decoration: none;
+    color: black;
+  }
+
+  &__actions{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    @include tablet{
+      flex-direction: row;
+    }
+  }
 
   &__cover {
     width: 9rem;

@@ -11,6 +11,20 @@ export default function BookDetails({ user }) {
 
   const { id } = useParams();
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+  const token = sessionStorage.getItem("token");
+
+  async function handleBorrow() {
+    try {
+      //Issue with axios when sending auth headers in patch request
+      const { data } = await axios.get(`${BACKEND_URL}/books/${id}/borrow`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+    } catch (error) {
+      if (error.response.data.message === "locked") {
+        getBookDetails();
+      }
+    }
+  }
 
   async function getBookDetails() {
     try {
@@ -48,6 +62,11 @@ export default function BookDetails({ user }) {
           <div className="bookDetails__info">
             <h1 className="bookDetails__title">{book.title}</h1>
             <p className="bookDetails__author">{book.author}</p>
+            {user && user.id === book.lockedBy_id && (
+              <p className="bookDetails__borrowed">
+                You have borrowed this book
+              </p>
+            )}
           </div>
           <div className="bookDetails__actions">
             {book.locked ? (
@@ -55,9 +74,20 @@ export default function BookDetails({ user }) {
                 LOCKED
               </Link>
             ) : (
-              <Link to="reader" className="bookDetails__button">
-                READ
-              </Link>
+              <>
+                {user && (
+                  <button
+                    onClick={handleBorrow}
+                    className="bookDetails__borrow"
+                  >
+                    BORROW FOR A WEEK
+                  </button>
+                )}
+
+                <Link to="reader" className="bookDetails__button">
+                  READ
+                </Link>
+              </>
             )}
           </div>
         </div>

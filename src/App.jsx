@@ -47,7 +47,7 @@ function App() {
           <Route path="/" element={<Navigate to="/homepage" />} />
           <Route path="/homepage" element={<Homepage user={user} />} />
           <Route path="/books/:id" element={<BookDetails user={user} />} />
-          <Route path="/books/:id/reader" element={<Reader />} />
+          <Route path="/books/:id/reader" element={<Reader user={user} />} />
           <Route path="/books/upload" element={<Upload />} />
           <Route path="/register" element={<Register />} />
           <Route

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import Scroll from "../../components/Scroll/Scroll";
 
-export default function Reader() {
+export default function Reader({user}) {
   const [book, setBook] = useState(null);
   const [error, setError] = useState(false);
 
@@ -55,7 +55,11 @@ export default function Reader() {
         </div>
       </article>
 
-      {book.locked ? <p>Locked</p> : <Scroll />}
+      {book.locked && (!user || user.id !== book.lockedBy_id) ? (
+        <p>Locked</p>
+      ) : (
+        <Scroll user={user}/>
+      )}
     </section>
   );
 }

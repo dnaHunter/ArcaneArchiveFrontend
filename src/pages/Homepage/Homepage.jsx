@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import BookIcon from "../../components/BookIcon/BookIcon";
 import "./Homepage.scss";
 import axios from "axios";
+import BorrowedList from "../../components/BorrowedList/BorrowedList";
 
 export default function Homepage({ user }) {
   const [bookList, setBookList] = useState(null);
@@ -55,6 +56,7 @@ export default function Homepage({ user }) {
   return (
     <section className="home">
       <div className="home__wrapper">
+        {borrowed && <BorrowedList borrowedList={borrowed} />}
         <h2 className="home__allTitle">ALL BOOKS</h2>
         <section className="home__all">
           {bookList.map((book) => (

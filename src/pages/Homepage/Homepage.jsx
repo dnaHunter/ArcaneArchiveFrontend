@@ -56,7 +56,9 @@ export default function Homepage({ user }) {
   return (
     <section className="home">
       <div className="home__wrapper">
-        {borrowed.length !== 0 && <BorrowedList borrowedList={borrowed} />}
+        {borrowed && borrowed.length !== 0 && (
+          <BorrowedList borrowedList={borrowed} />
+        )}
         <h2 className="home__allTitle">ALL BOOKS</h2>
         <section className="home__all">
           {bookList.map((book) => (

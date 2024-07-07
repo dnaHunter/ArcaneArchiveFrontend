@@ -2,7 +2,6 @@ import BookIcon from "../BookIcon/BookIcon";
 import "./BorrowedList.scss";
 
 export default function BorrowedList({ borrowedList }) {
-  console.log(borrowedList);
   return (
     <section className="borrowed">
       <h2 className="borrowed__title">YOUR BORROWED BOOKS</h2>
@@ -11,7 +10,7 @@ export default function BorrowedList({ borrowedList }) {
           <BookIcon
             key={book.id}
             id={book.id}
-            URL={book.coverImagePath}
+            URL={book.CoverImagePath}
             title={book.title}
             author={book.author}
           />

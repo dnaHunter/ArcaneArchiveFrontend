@@ -6,7 +6,7 @@ My app is an E-book libary website that will store books and display them to be 
 
 ## Installation
 
-- Clone both this and the [backend repository](https://github.com/dnaHunter/ArcaneArchive-api) onto your own systems. Follow the read me on the backend for how to run it.
+- Clone both [this](https://github.com/dnaHunter/ArcaneArchiveFrontend) and the [backend repository](https://github.com/dnaHunter/ArcaneArchive-api) onto your own systems. Follow the read me on the backend for how to run it.
 
 - Run `npm i` to install dependencies and node modules.
 

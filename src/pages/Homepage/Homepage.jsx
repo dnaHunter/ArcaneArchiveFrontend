@@ -3,11 +3,30 @@ import BookIcon from "../../components/BookIcon/BookIcon";
 import "./Homepage.scss";
 import axios from "axios";
 
-export default function Homepage() {
+export default function Homepage({ user }) {
   const [bookList, setBookList] = useState(null);
   const [error, setError] = useState(false);
+  const [borrowed, setBorrowed] = useState(null);
 
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+  const token = sessionStorage.getItem("token");
+
+  async function getBorrowedList() {
+    if (!user) {
+      setBorrowed(null);
+      return;
+    }
+
+    try {
+      const { data } = await axios.get(`${BACKEND_URL}/users/borrowed-books`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      setBorrowed(data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   async function getBookList() {
     try {
@@ -21,7 +40,8 @@ export default function Homepage() {
 
   useEffect(() => {
     getBookList();
-  }, []);
+    getBorrowedList();
+  }, [user]);
 
   if (error) {
     console.error(error);

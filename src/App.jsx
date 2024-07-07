@@ -45,7 +45,7 @@ function App() {
         <Header user={user} check={checkIsLoggedIn} />
         <Routes>
           <Route path="/" element={<Navigate to="/homepage" />} />
-          <Route path="/homepage" element={<Homepage />} />
+          <Route path="/homepage" element={<Homepage user={user} />} />
           <Route path="/books/:id" element={<BookDetails user={user} />} />
           <Route path="/books/:id/reader" element={<Reader />} />
           <Route path="/books/upload" element={<Upload />} />

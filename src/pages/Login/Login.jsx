@@ -84,7 +84,9 @@ export default function Login({ checkIsLoggedIn }) {
           {errorMsg && <p className="login__equal">{errorMsg}</p>}
           <button className="login__button">SIGN IN</button>
         </form>
-        <Link className="login__register">Create a new account</Link>
+        <Link to="/register" className="login__register">
+          Create a new account
+        </Link>
       </div>
     </section>
   );

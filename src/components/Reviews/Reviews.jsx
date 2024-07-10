@@ -41,14 +41,20 @@ export default function Reviews({ bookID, user }) {
   }
 
   return (
-    <section className="reviews">
-      <h2 className="reviews__title">Reviews</h2>
-      {showReviewForm ? (
-        <ReviewForm getReviews={getReviews} setShow={setShowReviewForm} user={user} />
-      ) : (
-        toggleButton
-      )}
-      <ReviewsList reviews={reviews} />
-    </section>
+    <div className="reviews__wrapper">
+      <section className="reviews">
+        <h2 className="reviews__title">Reviews</h2>
+        {showReviewForm ? (
+          <ReviewForm
+            getReviews={getReviews}
+            setShow={setShowReviewForm}
+            user={user}
+          />
+        ) : (
+          toggleButton
+        )}
+        <ReviewsList reviews={reviews} />
+      </section>
+    </div>
   );
 }

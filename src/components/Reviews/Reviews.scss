@@ -2,8 +2,21 @@
 @use "../../styles/mixins" as *;
 
 .reviews {
-  background-color: $offwhite;
   padding: 1rem;
+
+  @include tablet {
+    padding: 1rem $tabletMargin;
+  }
+
+  @include desktop {
+    padding: 1rem 2rem;
+    width: $maxWidth;
+    margin: auto;
+  }
+
+  &__wrapper {
+    background-color: $offwhite;
+  }
 
   &__title {
     margin: 0;

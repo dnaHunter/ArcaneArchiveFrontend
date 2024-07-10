@@ -3,7 +3,6 @@ import "./BookDetails.scss";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Reviews from "../../components/Reviews/Reviews";
-import Reader from "../Reader/Reader";
 
 export default function BookDetails({ user }) {
   const [book, setBook] = useState(null);
@@ -72,30 +71,34 @@ export default function BookDetails({ user }) {
 
   return (
     <section className="bookDetails">
-      <article className="bookDetails__hero">
-        <img
-          src={`${BACKEND_URL}/${book.coverImagePath}`}
-          alt=""
-          className="bookDetails__cover"
-        />
+      <div className="bookDetails__hero-wrapper">
+        <article className="bookDetails__hero">
+          <img
+            src={`${BACKEND_URL}/${book.coverImagePath}`}
+            alt=""
+            className="bookDetails__cover"
+          />
 
-        <div className="bookDetails__right">
-          <div className="bookDetails__info">
-            <h1 className="bookDetails__title">{book.title}</h1>
-            <p className="bookDetails__author">{book.author}</p>
-            {user && user.id === book.lockedBy_id && (
-              <p className="bookDetails__borrowed">
-                You have borrowed this book
-              </p>
-            )}
+          <div className="bookDetails__right">
+            <div className="bookDetails__info">
+              <h1 className="bookDetails__title">{book.title}</h1>
+              <p className="bookDetails__author">{book.author}</p>
+              {user && user.id === book.lockedBy_id && (
+                <p className="bookDetails__borrowed">
+                  You have borrowed this book
+                </p>
+              )}
+            </div>
+            <div className="bookDetails__actions">{bookActions}</div>
           </div>
-          <div className="bookDetails__actions">{bookActions}</div>
-        </div>
-      </article>
+        </article>
+      </div>
+      <div className="bookDetails__blurb-wrapper">
       <article className="bookDetails__blurb">
         <h2 className="bookDetails__blurbTitle">Blurb</h2>
         <p className="bookDetails__blurbContent">{book.blurb}</p>
       </article>
+      </div>
       <Reviews bookID={id} user={user} />
     </section>
   );

@@ -3,6 +3,7 @@ import "./Scroll.scss";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { v4 as uuid } from "uuid";
+import Markdown from "react-markdown";
 
 export default function Scroll({ user }) {
   const [textFile, setTextFile] = useState(null);
@@ -57,15 +58,16 @@ export default function Scroll({ user }) {
     return <p>Locked</p>;
   }
   //Splits onto new element if it is a new line at the end on a paragraph and not in the middle of a sentence or word.
-  const textArray = textFile.split(/(\r\n    \r\n|\r\n\r\n|\r\n )/);
+ // const textArray = textFile.split(/(\r\n    \r\n|\r\n\r\n|\r\n )/);
 
   return (
     <section className="scroll">
-      {textArray.map((line) => (
+      {/* {textArray.map((line) => (
         <p key={uuid()} className="scroll__line">
           {line}
         </p>
-      ))}
+      ))} */}
+      <Markdown>{textFile}</Markdown>
     </section>
   );
 }
